@@ -34,6 +34,11 @@ void PromptForAndOpenFile(ifstream& file) {
 
 }
 
+// Prints out each line in the input file, the reversed version of the line, and a
+//message indicating whether or not the line is a palindrome.
+// Pre:  fin is not in a fail state
+// Post: fin is at EOF
+//       console has received output
 
 void ProcessFile(ifstream& fin) {
     string line;                 // To hold lines from the input file
