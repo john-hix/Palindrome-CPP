@@ -62,6 +62,13 @@ void ProcessFile(ifstream& fin) {
 
 }
 
+// Takes a string indicates if it is a Palindrome; also gives back a one-for-one reversal
+// of the string.
+//
+// Pre:
+// Post: reversed will always be the reversal of line, REGARDLESS of isPalindrome's value
+//       isPalindrome will be true for palindrome strings. Does not include null strings because
+//      by definition a palindrome must have characters.
 
 void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome) {
 
@@ -72,6 +79,18 @@ void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalin
     char hiChar;               // To hold character from line toward end     of string within loop
     char lowChar;              // To hold character from line from beginning of string within loop
     bool canSkip;              // Whether the current character should be considered in evaluating the line's Palindrome-ness
+
+    // Handle cases when there are 1 or 0 characters in the string. Will end early.
+
+    if (line.length() < 2) {
+        reversed = line;
+        if (line.length() == 1)
+            isPalindrome = true;
+        else
+            isPalindrome = false;
+
+        return; // End early.
+    }
 
     // Loop through the characters in the line, building a reversed version to show the user
     // and along the way checking if the line is a palindrome.
