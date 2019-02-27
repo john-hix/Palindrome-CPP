@@ -17,6 +17,7 @@ int main() {
 
 
 // Prompts user for a file name and attempts to open file associated with it
+//
 // Pre:  file has been declared
 // Post: ifstream file is opened to the file specified by the user via cin
 
@@ -35,7 +36,8 @@ void PromptForAndOpenFile(ifstream& file) {
 }
 
 // Prints out each line in the input file, the reversed version of the line, and a
-//message indicating whether or not the line is a palindrome.
+// message indicating whether or not the line is a palindrome.
+//
 // Pre:  fin is not in a fail state
 // Post: fin is at EOF
 //       console has received output
@@ -67,13 +69,13 @@ void ProcessFile(ifstream& fin) {
 
 }
 
-// Takes a string indicates if it is a Palindrome; also gives back a one-for-one reversal
+// Takes a string indicates if it is a Palindrome; also gives back a character-by-character reversal
 // of the string.
 //
 // Pre:
 // Post: reversed will always be the reversal of str, REGARDLESS of isPalindrome's value
-//       isPalindrome will be true for palindrome strings. Does not include null strings because
-//      by definition a palindrome must have characters.
+//       isPalindrome will be true for palindrome strings. Null strings will not be classified
+//     as palindromes because, by definition, a palindrome has characters.
 
 void Palindrome(string str, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome) {
 
@@ -97,7 +99,7 @@ void Palindrome(string str, /* OUT */ string& reversed, /* OUT */ bool& isPalind
         return; // End early.
     }
 
-    // Loop through the characters in the str, building a reversed version to show the user
+    // Loop through the characters in the str, building a one-for-one reversed version
     // and along the way checking if the str is a palindrome.
     //
     // Slight inefficiency in incrementing fromBeg if Palendrome is already known, but eh.
@@ -152,6 +154,7 @@ void Palindrome(string str, /* OUT */ string& reversed, /* OUT */ bool& isPalind
 }
 
 // Tests if a given character is acceptable for use in a sentence-length Palindrome.
+//
 // Pre:  c is a assigned
 // Post: returns true if character is relevant in evaluating a Palindrome
 bool IsPalinChar(char c) {
