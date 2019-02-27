@@ -1,0 +1,157 @@
+#include <iostream> // cin/cout
+#include <fstream>  // ifstream
+#include <string>   // string
+
+using namespace std;
+
+
+// Prompts user for a file name and attempts to open file associated with it
+// Pre:  file has been declared
+// Post: ifstream file is opened to the file specified by the user via cin
+void PromptForAndOpenFile(ifstream& file);
+
+
+void ProcessFile(ifstream& fin);
+
+
+void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome);
+
+// Tests if a given character is acceptable for use in a sentence-length Palindrome.
+// Pre:  c is a assigned
+// Post: returns true if character is relevant in evaluating a Palindrome
+bool IsPalinChar(char c);
+
+
+int main() {
+
+    ifstream fin;
+
+    PromptForAndOpenFile(fin);
+
+    ProcessFile(fin);
+
+    fin.close();
+
+    return 0;
+}
+
+
+
+
+// Prompts user for a file name and attempts to open file associated with it
+// Pre:  file has been declared
+// Post: ifstream file is opened to the file specified by the user via cin
+
+void PromptForAndOpenFile(ifstream& file) {
+//    prompt user for file name
+//    echo back file name
+//    attempt to open file
+//
+//    while file stream is in fail state
+//        echo "failed to open [filename]"
+//        Reprompt for file name
+//        attempt to open file
+//
+//    echo "Successfully opened [filename]"
+
+}
+
+
+void ProcessFile(ifstream& fin) {
+    string line;                 // To hold lines from the input file
+    string reversedLine;
+    bool isPalindrome;  // True/False of each line; determines console output
+
+    // Loop through every line in file while there are lines left
+    getline(fin, line);     // Priming read
+
+    while(fin) {
+        Palindrome(line, reversedLine, isPalindrome);
+
+        cout << line << endl;
+        cout << reversedLine << endl;
+
+        if (isPalindrome) {
+            cout << "This is a palindrome!\n";
+        } else {
+            cout << "This is NOT a palindrome!\n";
+        }
+
+        cout << endl;   // Spacing between analyses of the lines
+
+        getline(fin, line);     // Get next line
+    }
+
+}
+
+
+void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome) {
+
+    string inReverse = "";     // To hold the line in its reversed order
+    bool stillPalin = true;    // Whether the has proven to be a palindrome (all it takes is one character off, thus the word "has")
+    int fromBeg = 0;           // Index of first character in `line`
+    int fromEnd;               // Index of last  character in `line`
+    char hiChar;               // To hold character from line toward end     of string within loop
+    char lowChar;              // To hold character from line from beginning of string within loop
+    bool canSkip;              // Whether the current character should be considered in evaluating the line's Palindrome-ness
+
+    // Loop through the characters in the line, building a reversed version to show the user
+    // and along the way checking if the line is a palindrome.
+    //
+    // Slight inefficiency in incrementing fromBeg if Palendrome is already known, but eh.
+    // It's far more readable and less error-prone to do it this way
+
+    for (fromEnd = line.length() -1; fromEnd >= 0; fromEnd--, fromBeg++) {
+
+        // Store both characters
+
+        lowChar = line.at(fromBeg);
+        hiChar = line.at(fromEnd);
+
+        // Add characters to inReverse, starting with the last character in line
+
+        inReverse += hiChar;
+
+        // Test if lowChar is relevant in determining whether string is a palindrome.
+        // NOTE: only ONE of the characters is tested.
+        // The order in which the palindrome test is executed below must take this into account
+        // Does NOT speak to both characters, just one.
+
+        canSkip = !IsPalinChar(lowChar);
+
+        // Since all it takes to fail the Palindrome test is for one pair of characters to be off,
+        // we can do a quick check to see if we even need to get into more detailed tests for Palindrome-ness.
+        // Thus we check stillPalin.
+        //
+        // Check if fromBeg and fromEnd have already "met" in the middle. If so, we should know the answer for
+        // stillPalin, so we can skip any further tests.
+        //
+        // NOTE: in both the situations above, the loop still has to run because it is building a reversed
+        // version of the string.
+
+        if (stillPalin && fromBeg <= fromEnd) {
+
+            // If we canNOT skip the characters AND they do NOT match, the line is not a Palindrome.
+            // Turn both characters into upper for comparison (since case doesn't matter for palindrome-ness)
+            //
+            // NOTE: Because we only tested ONE of the characters for canSkip, we check for canSkip AFTER comparing
+            // BOTH characters for equality.
+
+            if( toupper(lowChar) != toupper(hiChar) && !canSkip ) {
+                stillPalin = false; // The string is NOT a Palindrome.
+            }
+        }
+    }
+
+    // Assign local variables to output variables to return values
+    isPalindrome = stillPalin;
+    reversed     = inReverse;
+
+}
+
+// Tests if a given character is acceptable for use in a sentence-length Palindrome.
+// Pre:  c is a assigned
+// Post: returns true if character is relevant in evaluating a Palindrome
+bool IsPalinChar(char c) {
+    return isalnum(c);
+}
