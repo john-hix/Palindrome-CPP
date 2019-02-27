@@ -19,7 +19,6 @@ void PrintReverseString(string inString)
 // Pre: inString conatins a value
 // Post: return a reversed version of inString
 string ReverseString(string inString)
-   //
 
 // Remove white space and punctuation, and convert all alphabetic
 //   characters to upper case and return result
@@ -61,23 +60,19 @@ Main:
 
 
 
-Main:
-   GetFileInfo()
+// Prompt user for file name and return ifstream
+// Pre: inData declared
+// Post: inData contains valid ifstream for data file
+void  GetFileInfo(ifstream &inData) {
+    prompt user for file name
+    echo back file name
+    attempt to open file
 
-   // Get a line of text  // Priming read
+    while file stream is in fail state
+        echo "failed to open [filename]"
+        Reprompt for file name
+        attempt to open file
 
-   while (info in file){
+    echo "Successfully opened [filename]"
 
-      // Print forward string
-
-      // Reverse string and print out
-
-      // Normalize string
-
-      // if normalized string is a palindrome
-         cout << "Yay!\n";
-      else
-         cout << "Boo!\n";
-
-      // Get another line of text
-   }
+}
