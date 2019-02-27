@@ -71,25 +71,25 @@ void ProcessFile(ifstream& fin) {
 // of the string.
 //
 // Pre:
-// Post: reversed will always be the reversal of line, REGARDLESS of isPalindrome's value
+// Post: reversed will always be the reversal of str, REGARDLESS of isPalindrome's value
 //       isPalindrome will be true for palindrome strings. Does not include null strings because
 //      by definition a palindrome must have characters.
 
-void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome) {
+void Palindrome(string str, /* OUT */ string& reversed, /* OUT */ bool& isPalindrome) {
 
-    string inReverse = "";     // To hold the line in its reversed order
+    string inReverse = "";     // To hold the string in its reversed order
     bool stillPalin = true;    // Whether the has proven to be a palindrome (all it takes is one character off, thus the word "has")
-    int fromBeg = 0;           // Index of first character in `line`
-    int fromEnd;               // Index of last  character in `line`
-    char hiChar;               // To hold character from line toward end     of string within loop
-    char lowChar;              // To hold character from line from beginning of string within loop
-    bool canSkip;              // Whether the current character should be considered in evaluating the line's Palindrome-ness
+    int fromBeg = 0;           // Index of first character in `str`
+    int fromEnd;               // Index of last  character in `str`
+    char hiChar;               // To hold character from str toward end     of string within loop
+    char lowChar;              // To hold character from str from beginning of string within loop
+    bool canSkip;              // Whether the current character should be considered in evaluating the str's Palindrome-ness
 
     // Handle cases when there are 1 or 0 characters in the string. Will end early.
 
-    if (line.length() < 2) {
-        reversed = line;
-        if (line.length() == 1)
+    if (str.length() < 2) {
+        reversed = str;
+        if (str.length() == 1)
             isPalindrome = true;
         else
             isPalindrome = false;
@@ -97,20 +97,20 @@ void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalin
         return; // End early.
     }
 
-    // Loop through the characters in the line, building a reversed version to show the user
-    // and along the way checking if the line is a palindrome.
+    // Loop through the characters in the str, building a reversed version to show the user
+    // and along the way checking if the str is a palindrome.
     //
     // Slight inefficiency in incrementing fromBeg if Palendrome is already known, but eh.
     // It's far more readable and less error-prone to do it this way
 
-    for (fromEnd = line.length() -1; fromEnd >= 0; fromEnd--, fromBeg++) {
+    for (fromEnd = str.length() -1; fromEnd >= 0; fromEnd--, fromBeg++) {
 
         // Store both characters
 
-        lowChar = line.at(fromBeg);
-        hiChar = line.at(fromEnd);
+        lowChar = str.at(fromBeg);
+        hiChar = str.at(fromEnd);
 
-        // Add characters to inReverse, starting with the last character in line
+        // Add characters to inReverse, starting with the last character in str
 
         inReverse += hiChar;
 
@@ -133,7 +133,7 @@ void Palindrome(string line, /* OUT */ string& reversed, /* OUT */ bool& isPalin
 
         if (stillPalin && fromBeg <= fromEnd) {
 
-            // If we canNOT skip the characters AND they do NOT match, the line is not a Palindrome.
+            // If we canNOT skip the characters AND they do NOT match, the string is not a Palindrome.
             // Turn both characters into upper for comparison (since case doesn't matter for palindrome-ness)
             //
             // NOTE: Because we only tested ONE of the characters for canSkip, we check for canSkip AFTER comparing
