@@ -139,7 +139,13 @@ void PrintReverseString(string inString) {
 string ReverseString(string inString) {
     string rev = "";    // To hold the reversed string
 
-//    Loop through inString from its end and append to rev.
+    // Loop through inString from its end and append characters to rev.
+    for (int i = inString.length() - 1; i >= 0; i-- ) {
+        rev += inString.at(i);
+    }
+
+    cout << "This is inString: \n  " << inString << endl;
+    cout << "This is rev: \n  " << rev << endl;
 
     return rev;
 }
