@@ -114,15 +114,12 @@ void  GetFileInfo(ifstream &inData) {
 }
 
 string GetString(ifstream &inData){
-    cout << "GetString\n";
 
-    // declare string to hold data from file
+    string thisLine;            // to hold and return a line of text from inData
 
-    // get string from file
+    getline(inData, thisLine);  // get line of input from the file
 
-    // return string
-
-    return ""; // Placeholder to make shell run
+    return thisLine;            // return the line of input
 }
 
 
