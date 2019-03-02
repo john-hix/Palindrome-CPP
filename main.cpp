@@ -144,8 +144,8 @@ string ReverseString(string inString) {
         rev += inString.at(i);
     }
 
-    cout << "This is inString: \n  " << inString << endl;
-    cout << "This is rev: \n  " << rev << endl;
+//    cout << "This is inString: \n  " << inString << endl; // DEBUG
+//    cout << "This is rev: \n  " << rev << endl;           // DEBUG
 
     return rev;
 }
