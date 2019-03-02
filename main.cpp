@@ -158,14 +158,20 @@ string ReverseString(string inString) {
 // Post: Returns a string with all spaces and special characters removed and
 //       converted to upper case
 string NormalizeString(string inString) {
-    string clean = "";  // Return value; should only receive valid palindrome characters
+    string clean = "";  // Return value; should only receive alphanumeric characters
     char thisChar;      // To hold current char when looping through inString
 
-//    Loop through inString
-//      make character uppercase
-//      call isalnum with theChar
-//      if isalnum returns true, append theChar to clean
+    for (int i = 0; i < inString.length(); i++) {
 
+        thisChar = inString.at(i);  // Get current character
+
+        if (isalnum(thisChar)) {    // Only add to clean if character is valid
+            thisChar = toupper(thisChar);   // Convert to uppercase
+            clean += thisChar;              // Append to normalized string
+        }
+    }
+
+//    cout << "normalized: " << clean << endl; // DEBUG
 
     return clean;
 }
