@@ -61,7 +61,7 @@ int main() {
    while(inData) {
 
       // Print forward string
-      cout << inString;
+      cout << inString << endl;
 
       // Call PrintReverseString
       PrintReverseString(inString);
@@ -70,9 +70,12 @@ int main() {
       normalized = NormalizeString(inString);
 
        if ( IsPalindrome(normalized) )
-          cout << "yay";
+          cout << "This is a palindrome!\n";
        else
-          cout << "boo";
+          cout << "This is NOT a palindrome!";
+
+       // Spacing indicated in example run
+       cout << endl;
 
       // Read next line
       inString = GetString(inData);
@@ -109,7 +112,7 @@ void  GetFileInfo(ifstream &inData) {
         inData.open(fileName.c_str());
     }
     // Inform user of successful file open
-    cout << "Successfully opened " << fileName << endl;
+    cout << "Successfully opened " << fileName << endl << endl;
 
 }
 
