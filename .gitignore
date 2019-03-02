@@ -32,4 +32,6 @@
 *.out
 *.app
 
-palindrome
+# CodeBlocks
+bin
+Palindrome.layout
