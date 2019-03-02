@@ -20,14 +20,19 @@ using namespace std;
 // Post: inData contains valid ifstream for data file
 void GetFileInfo(ifstream &inData);
 
+// Reads a string from a file and returns it
+// Pre: inData is linked to a valid input file
+// Post: Returns next line read from a file
+string GetString(ifstream &inData);
+
 // Print the passed string in reverse
 // Pre: inString holds a value
 // Post: Display passed string in reverse
 void PrintReverseString(string inString);
 
-// Return a reversed version of inString
-// Pre: inString conatins a value
-// Post: return a reversed version of inString
+// Takes a string and reverses its order
+// Pre: inString contains a string
+// Post: Returns inString in reversed order
 string ReverseString(string inString);
 
 // Remove white space and punctuation, and convert all alphabetic
@@ -50,7 +55,7 @@ int main() {
 
    GetFileInfo(inData);
 
-   getline(inData, inString); // Priming read
+   inString = GetString(inData); // Priming read
 
    // While data in file
    while(inData) {
@@ -70,7 +75,7 @@ int main() {
           cout << "boo";
 
       // Read next line
-      getline(inData, inString);
+      inString = GetString(inData);
    }
 
     return 0;
@@ -94,6 +99,19 @@ void  GetFileInfo(ifstream &inData) {
 //    echo "Successfully opened [filename]"
 
 }
+
+string GetString(ifstream &inData){
+    cout << "GetString\n";
+
+    // declare string to hold data from file
+
+    // get string from file
+
+    // return string
+
+    return ""; // Placeholder to make shell run
+}
+
 
 void PrintReverseString(string inString) {
     char theChar;   // The current character within inString
