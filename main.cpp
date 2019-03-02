@@ -35,10 +35,11 @@ void PrintReverseString(string inString);
 // Post: Returns inString in reversed order
 string ReverseString(string inString);
 
-// Remove white space and punctuation, and convert all alphabetic
-//   characters to upper case and return result
-// Pre: inString contains a value
-// Post: Return normalized string
+// Takes a string and removes all spaces and special characters, and converts
+// to upper case, returning the result
+// Pre: inString contains a string
+// Post: Returns a string with all spaces and special characters removed and
+//       converted to upper case
 string NormalizeString(string inString);
 
 // Test if normString is a palindrome and return true or false
@@ -151,10 +152,11 @@ string ReverseString(string inString) {
 }
 
 
-// Remove white space and punctuation, and convert all alphabetic
-//   characters to upper case and return result
-// Pre: inString contains a value
-// Post: Return normalized string
+// Takes a string and removes all spaces and special characters, and converts
+// to upper case, returning the result
+// Pre: inString contains a string
+// Post: Returns a string with all spaces and special characters removed and
+//       converted to upper case
 string NormalizeString(string inString) {
     string clean = "";  // Return value; should only receive valid palindrome characters
     char thisChar;      // To hold current char when looping through inString
