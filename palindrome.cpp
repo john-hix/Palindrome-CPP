@@ -87,16 +87,29 @@ int main() {
 // Post: inData contains valid ifstream for data file
 void  GetFileInfo(ifstream &inData) {
     string fileName;    // Name of file to open
-//    prompt user for file name
-//    echo back file name
-//    attempt to open file
 
+    // Prompt user for file name
+    cout << "Please enter the name of the file to open: ";
+    cin >> fileName;
+
+    // Attempt to open file
+    inData.open(fileName.c_str());
+
+    // Handle failure to open file
     while (!inData) {
-//        echo "failed to open [filename]"
-//        Reprompt for file name
-//        attempt to open file
+        // Inform user of failure
+        cout << "Failed to open \"" << fileName << "\"." << endl;
+
+        // Reprompt for file name
+        cout << "Please a file name: ";
+        cin >> fileName;
+        cout << endl;   // Clear spacing
+
+        // attempt to open file again
+        inData.open(fileName.c_str());
     }
-//    echo "Successfully opened [filename]"
+    // Inform user of successful file open
+    cout << "Successfully opened " << fileName << endl;
 
 }
 
