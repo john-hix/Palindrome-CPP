@@ -73,7 +73,7 @@ int main() {
        if ( IsPalindrome(normalized) )
           cout << "This is a palindrome!\n";
        else
-          cout << "This is NOT a palindrome!";
+          cout << "This is NOT a palindrome!\n";
 
        // Spacing indicated in example run
        cout << endl;
