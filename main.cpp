@@ -183,12 +183,26 @@ string NormalizeString(string inString) {
 //      punctation removed....
 // Post: Return true if normString is a palindrome, false otherwise
 bool IsPalindrome(string normString) {
-    string reversed = ReverseString(normString);    // normString in reverse
 
-    if (reversed == normString)
-        return true;
+    bool isPalin = true;                // Whether the has proven to be a palindrome
+    int fromBeg = 0;                    // Index of first character in `normString`
+    int fromEnd = normString.length();  // Index of last  character in `normString`
 
-    return false;
+    // Check if symmentrical characters match
+    // Check if fromBeg and fromEnd have already "met" in the middle. If so, we should know the answer for
+    // stillPalin, so we can skip any further tests.
+    while(isPalin && fromBeg < fromEnd) {
+
+        if ( normString.at(fromEnd -1) !=  normString.at(fromBeg) ) {
+            isPalin = false;
+        }
+
+        fromBeg++;
+        fromEnd--;
+    }
+
+    return isPalin;
+
 }
 
 
