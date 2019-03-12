@@ -47,7 +47,7 @@ string NormalizeString(string inString);
 //      punctation removed....
 // Post: Return true if normString is a palindrome, false otherwise
 bool IsPalindrome(string normString);
-   // Is forward string == to reversed string
+
 
 int main() {
    ifstream inData;     // The file containing possible palindromes on each line
@@ -118,6 +118,9 @@ void  GetFileInfo(ifstream &inData) {
 
 }
 
+// Reads a string from a file and returns it
+// Pre: inData is linked to a valid input file
+// Post: Returns next line read from a file
 string GetString(ifstream &inData){
 
     string thisLine;            // to hold and return a line of text from inData
@@ -127,7 +130,9 @@ string GetString(ifstream &inData){
     return thisLine;            // return the line of input
 }
 
-
+// Print the passed string in reverse
+// Pre: inString holds a value
+// Post: Display passed string in reverse
 void PrintReverseString(string inString) {
     char theChar;   // The current character within inString
 
