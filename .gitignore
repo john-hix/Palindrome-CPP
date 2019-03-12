@@ -31,5 +31,7 @@
 *.exe
 *.out
 *.app
-palindrome   # Binary on Linux
 
+# CodeBlocks
+bin
+Palindrome.layout
