@@ -66,6 +66,7 @@ int main() {
 
       // Call PrintReverseString
       PrintReverseString(inString);
+      cout << endl;
 
       // Normalize string
       normalized = NormalizeString(inString);
@@ -131,7 +132,10 @@ void PrintReverseString(string inString) {
     char theChar;   // The current character within inString
 
     // Loop through each character in the string from the end, printing each char
-
+    for (int i = inString.length(); i > 0; i--) {
+        theChar = inString.at(i -1);
+        cout << theChar;
+    }
 }
 
 // Return a reversed version of inString
